@@ -10,82 +10,90 @@ const TronLogo = ({ className = "w-10 h-10" }: { className?: string }) => (
     xmlns="http://www.w3.org/2000/svg"
     className={className}
   >
-    {/* Brain outline - left side */}
+    {/* Left brain - cyan side with wavy lobes */}
     <path
-      d="M20 20c-6 2-10 8-10 15 0 8 6 14 14 14h4"
-      stroke="url(#gradient-cyan)"
+      d="M28 12c-3 0-6 1-8 3-4 0-7 3-8 6-3 2-5 6-5 10 0 3 1 6 3 8 0 4 2 7 5 9 2 3 6 5 10 5h3"
+      stroke="#00FFFF"
       strokeWidth="2.5"
       strokeLinecap="round"
+      strokeLinejoin="round"
       fill="none"
     />
-    {/* Brain curves - left */}
+    {/* Left brain inner curves */}
     <path
-      d="M14 28c-2 0-4 2-4 5s2 5 4 5"
-      stroke="url(#gradient-cyan)"
+      d="M12 25c-2 1-3 3-3 5s1 4 3 5"
+      stroke="#00FFFF"
       strokeWidth="2"
       strokeLinecap="round"
       fill="none"
     />
     <path
-      d="M18 24c-3 0-5 2-5 4s2 4 5 4"
-      stroke="url(#gradient-cyan)"
+      d="M16 19c-2 1-4 3-4 6s2 5 4 6"
+      stroke="#00FFFF"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+    />
+    <path
+      d="M13 38c-1 1-2 3-2 5s1 3 2 4"
+      stroke="#00FFFF"
       strokeWidth="2"
       strokeLinecap="round"
       fill="none"
     />
 
-    {/* Brain outline - right side */}
+    {/* Right brain - blue side with wavy lobes */}
     <path
-      d="M44 20c6 2 10 8 10 15 0 8-6 14-14 14h-4"
-      stroke="url(#gradient-blue)"
+      d="M36 12c3 0 6 1 8 3 4 0 7 3 8 6 3 2 5 6 5 10 0 3-1 6-3 8 0 4-2 7-5 9-2 3-6 5-10 5h-3"
+      stroke="#0066FF"
       strokeWidth="2.5"
       strokeLinecap="round"
+      strokeLinejoin="round"
       fill="none"
     />
-    {/* Brain curves - right */}
+    {/* Right brain inner curves */}
     <path
-      d="M50 28c2 0 4 2 4 5s-2 5-4 5"
-      stroke="url(#gradient-blue)"
+      d="M52 25c2 1 3 3 3 5s-1 4-3 5"
+      stroke="#0066FF"
       strokeWidth="2"
       strokeLinecap="round"
       fill="none"
     />
     <path
-      d="M46 24c3 0 5 2 5 4s-2 4-5 4"
-      stroke="url(#gradient-blue)"
+      d="M48 19c2 1 4 3 4 6s-2 5-4 6"
+      stroke="#0066FF"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+    />
+    <path
+      d="M51 38c1 1 2 3 2 5s-1 3-2 4"
+      stroke="#0066FF"
       strokeWidth="2"
       strokeLinecap="round"
       fill="none"
     />
 
-    {/* Lightning bolt - center */}
+    {/* Lightning bolt - sharp Z shape through center */}
     <path
-      d="M36 12L28 30h8l-4 22 14-26h-10l4-14z"
-      fill="url(#gradient-lightning)"
-      stroke="url(#gradient-lightning)"
-      strokeWidth="1"
+      d="M38 8L26 30h10L24 56l18-30H32L38 8z"
+      fill="url(#tron-lightning)"
+      stroke="url(#tron-lightning)"
+      strokeWidth="0.5"
       strokeLinejoin="round"
     />
 
-    {/* Circuit dots */}
-    <circle cx="12" cy="35" r="2" fill="#00FFFF" />
-    <circle cx="52" cy="35" r="2" fill="#0066FF" />
-    <circle cx="16" cy="42" r="1.5" fill="#00FFFF" opacity="0.7" />
-    <circle cx="48" cy="42" r="1.5" fill="#0066FF" opacity="0.7" />
+    {/* Circuit connection dots */}
+    <circle cx="8" cy="30" r="2" fill="#00FFFF" />
+    <circle cx="56" cy="30" r="2" fill="#0066FF" />
+    <circle cx="10" cy="42" r="1.5" fill="#00FFFF" opacity="0.8" />
+    <circle cx="54" cy="42" r="1.5" fill="#0066FF" opacity="0.8" />
 
     <defs>
-      <linearGradient id="gradient-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#00FFFF" />
-        <stop offset="100%" stopColor="#06B6D4" />
-      </linearGradient>
-      <linearGradient id="gradient-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="tron-lightning" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#0066FF" />
-        <stop offset="100%" stopColor="#3B82F6" />
-      </linearGradient>
-      <linearGradient id="gradient-lightning" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#0066FF" />
-        <stop offset="50%" stopColor="#00FFFF" />
-        <stop offset="100%" stopColor="#0066FF" />
+        <stop offset="50%" stopColor="#00DDFF" />
+        <stop offset="100%" stopColor="#00FFFF" />
       </linearGradient>
     </defs>
   </svg>
