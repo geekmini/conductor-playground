@@ -102,6 +102,7 @@ const TronLogo = ({ className = "w-10 h-10" }: { className?: string }) => (
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -186,12 +187,47 @@ export default function Home() {
             </a>
 
             {/* Mobile menu button */}
-            <button className="md:hidden w-10 h-10 glass-card flex items-center justify-center">
-              <div className="space-y-1.5">
-                <div className="w-5 h-0.5 bg-white" />
-                <div className="w-3 h-0.5 bg-white" />
+            <button
+              className="md:hidden w-10 h-10 glass-card flex items-center justify-center"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className="space-y-1.5 relative">
+                <div className={`w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <div className={`w-3 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+                <div className={`w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
               </div>
             </button>
+          </div>
+
+          {/* Mobile menu dropdown */}
+          <div
+            className={`md:hidden absolute top-full left-0 right-0 glass-card mx-6 mt-2 rounded-2xl overflow-hidden transition-all duration-300 ${
+              isMobileMenuOpen
+                ? 'opacity-100 translate-y-0 pointer-events-auto'
+                : 'opacity-0 -translate-y-4 pointer-events-none'
+            }`}
+          >
+            <div className="p-6 space-y-4">
+              {["Work", "Services", "About", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="block text-lg font-medium text-white/80 hover:text-white transition-colors py-2"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                className="btn-primary block text-center mt-4"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Let&apos;s Talk
+              </a>
+            </div>
           </div>
         </nav>
 
