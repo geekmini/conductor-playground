@@ -2,6 +2,95 @@
 
 import { useState, useEffect } from "react";
 
+// Tron.ai Logo - Brain with Lightning Bolt
+const TronLogo = ({ className = "w-10 h-10" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    {/* Brain outline - left side */}
+    <path
+      d="M20 20c-6 2-10 8-10 15 0 8 6 14 14 14h4"
+      stroke="url(#gradient-cyan)"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      fill="none"
+    />
+    {/* Brain curves - left */}
+    <path
+      d="M14 28c-2 0-4 2-4 5s2 5 4 5"
+      stroke="url(#gradient-cyan)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+    />
+    <path
+      d="M18 24c-3 0-5 2-5 4s2 4 5 4"
+      stroke="url(#gradient-cyan)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+    />
+
+    {/* Brain outline - right side */}
+    <path
+      d="M44 20c6 2 10 8 10 15 0 8-6 14-14 14h-4"
+      stroke="url(#gradient-blue)"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      fill="none"
+    />
+    {/* Brain curves - right */}
+    <path
+      d="M50 28c2 0 4 2 4 5s-2 5-4 5"
+      stroke="url(#gradient-blue)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+    />
+    <path
+      d="M46 24c3 0 5 2 5 4s-2 4-5 4"
+      stroke="url(#gradient-blue)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+    />
+
+    {/* Lightning bolt - center */}
+    <path
+      d="M36 12L28 30h8l-4 22 14-26h-10l4-14z"
+      fill="url(#gradient-lightning)"
+      stroke="url(#gradient-lightning)"
+      strokeWidth="1"
+      strokeLinejoin="round"
+    />
+
+    {/* Circuit dots */}
+    <circle cx="12" cy="35" r="2" fill="#00FFFF" />
+    <circle cx="52" cy="35" r="2" fill="#0066FF" />
+    <circle cx="16" cy="42" r="1.5" fill="#00FFFF" opacity="0.7" />
+    <circle cx="48" cy="42" r="1.5" fill="#0066FF" opacity="0.7" />
+
+    <defs>
+      <linearGradient id="gradient-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#00FFFF" />
+        <stop offset="100%" stopColor="#06B6D4" />
+      </linearGradient>
+      <linearGradient id="gradient-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#0066FF" />
+        <stop offset="100%" stopColor="#3B82F6" />
+      </linearGradient>
+      <linearGradient id="gradient-lightning" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#0066FF" />
+        <stop offset="50%" stopColor="#00FFFF" />
+        <stop offset="100%" stopColor="#0066FF" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
@@ -58,19 +147,12 @@ export default function Home() {
         >
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet to-cyan flex items-center justify-center">
-                <span
-                  className="text-white font-bold text-lg"
-                  style={{ fontFamily: "var(--font-syne)" }}
-                >
-                  T
-                </span>
-              </div>
+              <TronLogo className="w-10 h-10" />
               <span
                 className="text-xl font-bold tracking-tight"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
-                Tron.ai
+                tron.ai
               </span>
             </div>
 
@@ -845,19 +927,12 @@ export default function Home() {
             <div className="grid md:grid-cols-4 gap-12 mb-12">
               <div className="md:col-span-2">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet to-cyan flex items-center justify-center">
-                    <span
-                      className="text-white font-bold text-lg"
-                      style={{ fontFamily: "var(--font-syne)" }}
-                    >
-                      T
-                    </span>
-                  </div>
+                  <TronLogo className="w-10 h-10" />
                   <span
                     className="text-xl font-bold tracking-tight"
                     style={{ fontFamily: "var(--font-syne)" }}
                   >
-                    Tron.ai
+                    tron.ai
                   </span>
                 </div>
                 <p
