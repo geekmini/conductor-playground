@@ -91,9 +91,9 @@ export default function Home() {
               ))}
             </div>
 
-            <button className="btn-secondary hidden md:block">
+            <a href="#contact" className="btn-secondary hidden md:block">
               Let&apos;s Talk
-            </button>
+            </a>
 
             {/* Mobile menu button */}
             <button className="md:hidden w-10 h-10 glass-card flex items-center justify-center">
@@ -161,8 +161,8 @@ export default function Home() {
                       : "opacity-0 translate-y-8"
                   }`}
                 >
-                  <button className="btn-primary">View Our Work</button>
-                  <button className="btn-secondary">Watch Reel</button>
+                  <a href="#work" className="btn-primary">View Our Work</a>
+                  <a href="#work" className="btn-secondary">Watch Reel</a>
                 </div>
 
                 {/* Stats */}
@@ -616,6 +616,129 @@ export default function Home() {
           </div>
         </section>
 
+        {/* About Section */}
+        <section id="about" className="px-6 py-24">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left - Visual */}
+              <div className="relative">
+                <div className="glass-card p-8 md:p-12">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-4">
+                      <div className="glass-card p-6 bg-violet/10">
+                        <div
+                          className="text-4xl font-bold gradient-text mb-2"
+                          style={{ fontFamily: "var(--font-syne)" }}
+                        >
+                          8+
+                        </div>
+                        <div
+                          className="text-sm text-white/50"
+                          style={{ fontFamily: "var(--font-outfit)" }}
+                        >
+                          Years of Experience
+                        </div>
+                      </div>
+                      <div className="glass-card p-6">
+                        <div
+                          className="text-4xl font-bold gradient-text mb-2"
+                          style={{ fontFamily: "var(--font-syne)" }}
+                        >
+                          50+
+                        </div>
+                        <div
+                          className="text-sm text-white/50"
+                          style={{ fontFamily: "var(--font-outfit)" }}
+                        >
+                          Team Members
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-4 mt-8">
+                      <div className="glass-card p-6">
+                        <div
+                          className="text-4xl font-bold gradient-text mb-2"
+                          style={{ fontFamily: "var(--font-syne)" }}
+                        >
+                          98%
+                        </div>
+                        <div
+                          className="text-sm text-white/50"
+                          style={{ fontFamily: "var(--font-outfit)" }}
+                        >
+                          Client Satisfaction
+                        </div>
+                      </div>
+                      <div className="glass-card p-6 bg-cyan/10">
+                        <div
+                          className="text-4xl font-bold gradient-text mb-2"
+                          style={{ fontFamily: "var(--font-syne)" }}
+                        >
+                          24/7
+                        </div>
+                        <div
+                          className="text-sm text-white/50"
+                          style={{ fontFamily: "var(--font-outfit)" }}
+                        >
+                          Support Available
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-violet/20 blur-2xl" />
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-cyan/20 blur-2xl" />
+              </div>
+
+              {/* Right - Content */}
+              <div>
+                <h2
+                  className="text-4xl md:text-5xl font-bold mb-6"
+                  style={{ fontFamily: "var(--font-syne)" }}
+                >
+                  About <span className="gradient-text">Tron.ai</span>
+                </h2>
+                <p
+                  className="text-white/50 text-lg mb-6 leading-relaxed"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  We are a team of passionate designers, developers, and
+                  strategists dedicated to crafting exceptional digital
+                  experiences. Founded with a vision to bridge the gap between
+                  technology and creativity, we transform ambitious ideas into
+                  reality.
+                </p>
+                <p
+                  className="text-white/50 text-lg mb-8 leading-relaxed"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  Our approach combines cutting-edge technology with bold
+                  creative vision, ensuring every project we deliver not only
+                  meets but exceeds expectations. We believe in the power of
+                  collaboration and innovation.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    "Innovation",
+                    "Creativity",
+                    "Excellence",
+                    "Collaboration",
+                  ].map((value) => (
+                    <span
+                      key={value}
+                      className="px-4 py-2 glass-card text-sm font-medium"
+                      style={{ fontFamily: "var(--font-outfit)" }}
+                    >
+                      {value}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Testimonial / Quote Section */}
         <section className="px-6 py-24">
           <div className="max-w-4xl mx-auto text-center">
@@ -689,17 +812,17 @@ export default function Home() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input
                       type="text"
                       placeholder="Name"
-                      className="col-span-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-violet transition-colors"
+                      className="bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-violet transition-colors"
                       style={{ fontFamily: "var(--font-outfit)" }}
                     />
                     <input
                       type="email"
                       placeholder="Email"
-                      className="col-span-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-violet transition-colors"
+                      className="bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-violet transition-colors"
                       style={{ fontFamily: "var(--font-outfit)" }}
                     />
                   </div>
