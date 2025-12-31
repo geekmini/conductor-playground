@@ -56,9 +56,11 @@ body {
 .fluid-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.6;
+  filter: blur(40px);
+  opacity: 0.5;
   animation: blob-float 20s ease-in-out infinite;
+  will-change: transform;
+  contain: layout style paint;
 }
 
 .fluid-blob-1 {
@@ -114,7 +116,7 @@ body {
   height: 100%;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -137,13 +139,14 @@ body {
 /* Glassmorphism card base */
 .glass-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  contain: layout style;
 }
 
 .glass-card::before {
@@ -250,7 +253,7 @@ body {
   border: 1px solid var(--glass-border);
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
 }
 
 .btn-secondary:hover {
@@ -289,6 +292,46 @@ body {
 .animate-fade-up {
   animation: fade-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity: 0;
+}
+
+/* Modal animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
 }
 
 /* Pulse glow animation */
@@ -333,4 +376,112 @@ body {
 ::selection {
   background: var(--violet);
   color: white;
+}
+
+/* Screen reader only - for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Custom font classes */
+.font-display {
+  font-family: var(--font-syne), system-ui, sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+/* Spin animations */
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin 15s linear infinite reverse;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Improved color contrast for accessibility - WCAG AA compliant */
+/* Minimum contrast ratio 4.5:1 for normal text, 3:1 for large text */
+/* On #030303 background, we need at least rgba(255,255,255,0.7) for 4.5:1 */
+
+/* Secondary text - meets 4.5:1 contrast ratio */
+.text-muted {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Tertiary text - meets 3:1 for large text only */
+.text-muted-lg {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Focus visible styles for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .fluid-blob {
+    animation: none;
+  }
+
+  .animate-spin-slow,
+  .animate-spin-slow-reverse,
+  .animate-float,
+  .animate-pulse,
+  .gradient-text {
+    animation: none;
+  }
+}
+
+/* Content visibility for below-fold sections - improves initial render */
+section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
